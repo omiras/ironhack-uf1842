@@ -15,14 +15,15 @@
     </main>
     <script>
         const data = {
-            labels: ['Naranja', 'Plátano', 'Manzana', 'Sandía'],
+            labels: ['Naranja', 'Plátano', 'Manzana', 'Sandía', 'Melón'],
             datasets: [{
-                data: [17.04, 11.75, 9.44, 7.82],
+                data: [17.04, 11.75, 9.44, 7.82, 7.62],
                 backgroundColor: [
                     'rgba(255, 165, 0, 0.2)', // Naranja
                     'rgba(255, 255, 0, 0.2)', // Plátano
                     'rgba(255, 0, 0, 0.2)', // Manzana
                     'rgba(0, 99, 0, 0.2)', // Sandía
+                    'rgba(99, 0, 0, 0.2)', // Melón
                 ],
                 borderWidth: 1,
                 label: "Consumo de fruta por persona y año"
@@ -32,7 +33,7 @@
 
         // Configuración del gráfico
         const config = {
-            type: 'pie',
+            type: 'bar',
             data: data,
             options: {
                 responsive: true,
@@ -43,7 +44,14 @@
                     tooltip: {
                         callbacks: {
                             label: function (tooltipItem) {
-                                let message = `${tooltipItem.label}: ${tooltipItem.raw} kg`;
+                                let message = ``;
+
+                                if (tooltipItem.raw < 8) {
+                                    message = `${tooltipItem.label}: ${tooltipItem.raw} kg producción insuficiente`;
+                                }
+                                else {
+                                    message = `${tooltipItem.label}: ${tooltipItem.raw} kg`;
+                                }
 
                                 return message
 
