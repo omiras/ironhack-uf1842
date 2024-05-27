@@ -13,9 +13,14 @@ const fetchUserData = async (user) => {
     errorMessage.textContent = "";
     const response = await fetch(`https://api.github.com/users/${user}`);
     if (!response.ok) {
+      //Reset table
+      tdArray[0].textContent = "";
+      tdArray[1].textContent = "";
+      profileImg.src = "";
+      linkGitHub.textContent = "";
+      //Show error message
       div.appendChild(errorMessage);
-      errorMessage.textContent =
-        "An error occurred while processing the user search.";
+      errorMessage.textContent = "An error occurred while processing the user search. Probably nonexistent user.";
       errorMessage.style.color = "red";
       throw new Error("Network response not ok");
     }
