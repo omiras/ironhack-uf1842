@@ -22,4 +22,17 @@ const updateCalculator = (bill, percentage) => {
     console.log(calculateTotalBill(billAmount.value, percentageTip.value))
 }
 
+//Reset tipAmount and totalBill function
+const resetTipAndTotalBill = () => {
+    console.log('from reset')
+    tipAmount.value = "";
+    totalBill.value = "";
+}
+
+//EventListeners
+
 calculateBtn.addEventListener("click", () => updateCalculator(billAmount.value, percentageTip.value));
+
+// Reset tipAmount and totalBill when setting new values for billAmount and percentageTip
+billAmount.addEventListener("change", resetTipAndTotalBill);
+percentageTip.addEventListener("change", resetTipAndTotalBill);
