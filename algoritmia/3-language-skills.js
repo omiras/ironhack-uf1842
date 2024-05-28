@@ -12,7 +12,13 @@
  */
 
 function filterProgrammingLanguages(languages, minYears) {
-
+    let candidateLanguagesWithMinYears = [];
+languages.forEach(language => {
+    if (language.years >= minYears) {
+        candidateLanguagesWithMinYears.push(language.name)
+    }
+})
+return candidateLanguagesWithMinYears;
 }
 
 // Caso 1: Candidata con suficientes años de experiencia en algunos lenguajes
